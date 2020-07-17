@@ -2,8 +2,10 @@ FROM rocker/geospatial:4.0.2
 MAINTAINER Thomas Hsiao
 
 # install helper packages
-RUN R -e "install.packages('remotes', repos = 'http://cran.us.r-project.org')"
-RUN R -e  "install.packages('devtools', repos = 'http://cran.us.r-project.org')"
+RUN install2.r --error --deps TRUE \
+    remotes \
+    devtools \
+    && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
 
 # JAGS dependencies
 RUN apt-get update \
@@ -41,12 +43,14 @@ RUN install2.r --error --deps TRUE \
 
 # install spatial specific
 RUN install2.r --error --deps TRUE \
-    ggmap \
-    sparr \
-    sparrpowR \
     CARBayes \
     CARBayesST \
     concaveman \
+    ggmap \
+    sparr \
+    sparrpowR \
+    tidycensus \
+    tigris \
     && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
 
 # install tmb related packages
@@ -59,5 +63,4 @@ RUN R -e "remotes::install_github('mlysy/TMBtools', dependencies = TRUE)"
 # install INLA related packages
 RUN Rscript -e "install.packages('INLA', repos=c('https://cloud.r-project.org/', INLA='https://inla.r-inla-download.org/R/stable'), dep=TRUE)" && \
     rm -rf /tmp/*
-
 
