@@ -15,9 +15,16 @@ The following command tells docker to pull the image from DockerHub and launches
 ```bash
 docker run --rm -d -p 8787:8787 -e USER=username -e PASSWORD=password labwaller/base
 ```
-When you access the Rstudio Server for the first time in your browser, you will be prompted to login with the username and password you specified in your `docker run` command. Original passwords are especially important when working on remote servers.
+When you access the RStudio Server for the first time in your browser, you will be prompted to login with the username and password you specified in your `docker run` command. Original passwords are especially important when working on remote servers.
 
 ## Updating the image
+
+The current automated image build workflow is inspired by the [IHME Demographics team setup](https://github.com/ihmeuw-demographics/docker-base). A build is initiated when i) a pull request to the master branch is opened ii) a tagged commit is pushed to the remote. Only a tagged commit will also initiate pushing the built image to Docker Hub. The tags should be used to differentiate versions of an image. There will always be the "latest" image, but other images associated with specific CRAN dates or package versions may be useful. To tag Git commits and push to the remote to initiate the automatic build an example call would be (without the curly brackets in the actual call):
+
+```bash
+git tag -a v{name.0.0}
+git push origin v{name.0.0}
+```
 
 ## Creating custom image
 
