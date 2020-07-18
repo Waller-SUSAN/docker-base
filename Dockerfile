@@ -30,7 +30,8 @@ RUN install2.r --error --deps TRUE \
     shinystan \
     ggmcmc \
     tidybayes \
-    brms \
+    brms_2.13.3.tar.gz \
+    # brms \
     && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
 
 # install rjags specific
