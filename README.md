@@ -13,7 +13,7 @@ Instructions for installing Docker can be found [here](https://docs.docker.com/g
 The following command tells docker to pull the image from DockerHub and launches a RStudio-Server Session. The session can then be accessed in your browser as `http://localhost:8787`. 
 
 ```bash
-docker run --rm -d -p 8787:8787 -e USER=username -e PASSWORD=password lwallerlab/base
+docker run --rm -d -p 8787:8787 -e USER=username -e PASSWORD=password labwaller/base
 ```
 When you access the Rstudio Server for the first time in your browser, you will be prompted to login with the username and password you specified in your `docker run` command. Original passwords are especially important when working on remote servers.
 
@@ -24,7 +24,7 @@ When you access the Rstudio Server for the first time in your browser, you will 
 For creating a Docker image custom to a specific analysis or paper, you can use the `docker-base` image here as the starting point! Simply create a new Dockerfile to create the new image. Below is a rough example.
 
 ```bash
-FROM lwallerlab/base
+FROM labwaller/base:latest
 
 # Set up the file structure in the container to match your analysis.
 # RUN mkdir /home/dir1 /home/dir2 
@@ -39,3 +39,4 @@ FROM lwallerlab/base
 * [`install2.r` code](https://github.com/eddelbuettel/littler/blob/master/inst/examples/install2.r)
 * [`rocker/bayesian` Dockerfile](https://github.com/mavelli/rocker-bayesian/blob/master/Dockerfile)
 * [R-INLA Dockerfile](https://github.com/egonzalf/rstudio-inla/blob/master/Dockerfile)
+* [Derek Powell Guide to R Docker](http://www.derekmpowell.com/posts/2018/02/docker-tutorial-1/)
