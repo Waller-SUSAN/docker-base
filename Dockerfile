@@ -9,10 +9,10 @@ RUN install2.r --error --deps TRUE \
 
 # JAGS dependencies
 RUN apt-get update \
- && apt-get install -y --no-install-recommends \
-  jags \
-  mercurial gdal-bin libgdal-dev gsl-bin libgsl-dev \ 
-  libc6-i386
+    && apt-get install -y --no-install-recommends \
+    jags \
+    mercurial gdal-bin libgdal-dev gsl-bin libgsl-dev \ 
+    libc6-i386
 
 RUN wget -nd -P /tmp http://pj.freefaculty.org/Debian/squeeze/amd64/openbugs_3.2.2-1_amd64.deb
 RUN dpkg -i /tmp/openbugs_3.2.2-1_amd64.deb && rm /tmp/openbugs_3.2.2-1_amd64.deb 
@@ -20,8 +20,9 @@ RUN dpkg -i /tmp/openbugs_3.2.2-1_amd64.deb && rm /tmp/openbugs_3.2.2-1_amd64.de
 # adding deps separately so it may build in dockerhub (works on my WS)
 RUN apt-get install -y r-cran-rcpp r-cran-rcppeigen
 
-# Install rstan and Bayesian
+# Install rstan and Bayesian dated 07/13/2020
 RUN install2.r --error --deps TRUE \
+    --repos "https://cran.microsoft.com/snapshot/2020-07-13/" \
     rstan \
     loo \
     bayesplot \
@@ -30,8 +31,7 @@ RUN install2.r --error --deps TRUE \
     shinystan \
     ggmcmc \
     tidybayes \
-    brms_2.13.3.tar.gz \
-    # brms \
+    brms \
     && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
 
 # install rjags specific
@@ -53,7 +53,7 @@ RUN install2.r --error --deps TRUE \
     tidycensus \
     tigris \
     && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
-
+ 
 # install tmb related packages
 RUN install2.r --error --deps TRUE \
     TMB \
