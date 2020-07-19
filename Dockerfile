@@ -5,6 +5,7 @@ MAINTAINER Thomas Hsiao
 RUN install2.r --error --deps TRUE \
     remotes \
     devtools \
+    here \
     && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
 
 # JAGS dependencies
