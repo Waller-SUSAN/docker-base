@@ -19,7 +19,7 @@ When you access the RStudio Server for the first time in your browser, you will 
 
 ## Updating the image
 
-The current automated image build workflow is inspired by the [IHME Demographics team setup](https://github.com/ihmeuw-demographics/docker-base). A build is initiated when i) a pull request to the master branch is opened ii) a tagged commit is pushed to the remote. Only a tagged commit will also initiate pushing the built image to Docker Hub. The tags should be used to differentiate versions of an image. There will always be the "latest" image, but other images associated with specific CRAN dates or package versions may be useful. To tag Git commits and push to the remote to initiate the automatic build an example call would be (without the curly brackets in the actual call):
+The current automated image build workflow is inspired by the [IHME Demographics team setup](https://github.com/ihmeuw-demographics/docker-base). A build is initiated when the `Dockerfile` has changed since the last commit and either i) a pull request to the master branch is opened ii) a push to master iii) a pushed tag. Only a push to master or a tagged commit will initiate a push to Docker Hub after a successful build. The tags should be used to differentiate versions of an image. A push to master will lead to an updated "latest" tag. To tag Git commits and push to the remote to initiate the automatic build an example call would be (without the curly brackets in the actual call):
 
 ```bash
 git tag -a v{name.0.0}
