@@ -22,7 +22,8 @@ RUN apt-get install -y r-cran-rcpp r-cran-rcppeigen
 
 # Install rstan and Bayesian dated 07/13/2020
 RUN install2.r --error --deps TRUE \
-    --repos "https://cran.microsoft.com/snapshot/2020-07-13/" \
+    -r "https://mc-stan.org/r-packages/" \
+    -r "https://packagemanager.rstudio.com/all/__linux__/focal/latest" \
     rstan \
     loo \
     bayesplot \
@@ -31,6 +32,7 @@ RUN install2.r --error --deps TRUE \
     shinystan \
     ggmcmc \
     tidybayes \
+    cmdstanr \
     brms \
     && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
 
