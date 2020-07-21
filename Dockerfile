@@ -55,6 +55,8 @@ RUN install2.r --error --deps TRUE \
     sparrpowR \
     tidycensus \
     tigris \
+    prism \
+    RStoolbox \
     && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
  
 # install tmb related packages
