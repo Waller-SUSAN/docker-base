@@ -4,10 +4,8 @@ on:
   push:
     tags: [ '*' ]
     branches: [ master ]
-    paths: [ 'Dockerfile' ]
   pull_request:
     branches: [ master ]
-    paths: [ 'Dockerfile' ]
 
 jobs:
 
