@@ -47,3 +47,4 @@ FROM labwaller/base:latest
 * [`rocker/bayesian` Dockerfile](https://github.com/mavelli/rocker-bayesian/blob/master/Dockerfile)
 * [R-INLA Dockerfile](https://github.com/egonzalf/rstudio-inla/blob/master/Dockerfile)
 * [Derek Powell Guide to R Docker](http://www.derekmpowell.com/posts/2018/02/docker-tutorial-1/)
+* [Dirk Eddelbuettel's presentation on rocker and reproducible research (July 29, 2020)](https://dirk.eddelbuettel.com/papers/dssv2020_rocker.pdf)
